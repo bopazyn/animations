@@ -1,0 +1,127 @@
+/* Slider */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.label {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: #8a8a8a;
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.track {
+  flex: 1;
+}
+
+.input {
+  width: 100%;
+  cursor: pointer;
+  height: 4px;
+}
+
+.valueDisplay {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: #e8e8e8;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+/* Page layout */
+.page {
+  background: #0f0f0f;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  padding: 2rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #161616;
+}
+
+.header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #262626;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.headerDot {
+  font-size: 13px;
+  color: #3a3a3a;
+}
+
+.headerTitle {
+  font-size: 12px;
+  color: #4a4a4a;
+  letter-spacing: 0.08em;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.controls {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid #262626;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.divider {
+  height: 1px;
+  background: #262626;
+}
+
+.formulas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formulasLabel {
+  font-size: 11px;
+  color: #3a3a3a;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.formulaRow {
+  font-size: 12px;
+  color: #5a5a5a;
+}
+
+.formulaResult {
+  color: #e8e8e8;
+}
+
+.svgWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
