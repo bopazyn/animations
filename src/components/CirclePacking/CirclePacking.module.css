@@ -117,20 +117,44 @@
   color: #e8e8e8;
 }
 
+.animationPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.animationOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.animationOption {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #5a5a5a;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.animationOption:hover {
+  color: #8a8a8a;
+  border-color: #3a3a3a;
+}
+
+.animationOptionActive {
+  color: #e8e8e8;
+  border-color: #4a4a4a;
+}
+
 .svgWrapper {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  circle {
-    --animation-duration: calc(var(--duration) * 1s);
-
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: pulse var(--animation-duration) infinite;
-    animation-delay: calc(var(--animation-duration) * var(--alpha) / 2 / pi);
-  }
 }
 
 @keyframes pulse {
@@ -151,5 +175,32 @@
   }
   70% {
     transform: scale(1);
+  }
+}
+
+.animation1 {
+  circle {
+    --animation-duration: calc(var(--duration) * 1s);
+
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse var(--animation-duration) infinite;
+    animation-delay: calc(var(--animation-duration) * var(--alpha) / 2 / pi);
+  }
+}
+
+@keyframes color {
+  100% {
+    fill: transparent;
+    stroke: transparent;
+  }
+}
+
+.animation2 {
+  circle {
+    --animation-duration: calc(var(--duration) * 1s);
+
+    animation: color var(--animation-duration) infinite alternate;
+    animation-delay: calc(var(--animation-duration)/var(--n) * var(--level));
   }
 }

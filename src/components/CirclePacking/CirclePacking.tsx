@@ -58,6 +58,10 @@ const COLORS = {
   ],
 };
 
+type AnimationClass = "animation1" | "animation2";
+
+const ANIMATIONS: AnimationClass[] = ["animation1", "animation2"];
+
 const CirclePacking = () => {
   const [n, setN] = useState(7);
   const [r, setR] = useState(4);
@@ -65,6 +69,7 @@ const CirclePacking = () => {
   const [p, setP] = useState(40);
   const [animationDuration, setAnimationDuration] = useState(4);
   const [enlargement, setEnlargement] = useState(3);
+  const [animation, setAnimation] = useState<AnimationClass>("animation1");
 
   const RR = Array.from({length: n}, (_, i) => (i + 1) * (2 * r + d));
   const nn = Array.from({length: n}).map((_, i) => countCircles(RR[i], r, p));
@@ -121,6 +126,23 @@ const CirclePacking = () => {
 
             <div className={styles.divider}/>
 
+            <div className={styles.animationPicker}>
+              <div className={styles.formulasLabel}>ANIMATION</div>
+              <div className={styles.animationOptions}>
+                {ANIMATIONS.map((a) => (
+                  <button
+                    key={a}
+                    className={`${styles.animationOption} ${animation === a ? styles.animationOptionActive : ""}`}
+                    onClick={() => setAnimation(a)}
+                  >
+                    {a}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.divider}/>
+
             <div className={styles.formulas}>
               <div className={styles.formulasLabel}>ORBIT RADII</div>
               {RR.map((x, i) => (
@@ -135,10 +157,11 @@ const CirclePacking = () => {
 
           <div className={styles.svgWrapper}>
             <svg
-              key={[n,r, d, p, enlargement, animationDuration].join('_')}
+              key={[n, r, d, p, enlargement, animationDuration, animation].join('_')}
               width={svgSize}
               height={svgSize}
               viewBox={`0 0 ${svgSize} ${svgSize}`}
+              className={styles[animation]}
             >
               {layerNCircles.map((x, i) => (
                 <Fragment key={i}>
@@ -154,7 +177,10 @@ const CirclePacking = () => {
                       style={{
                         '--duration': animationDuration,
                         '--enlargement': enlargement,
-                        '--alpha': c.alfa
+                        '--alpha': c.alfa,
+                        '--level': i,
+                        '--n': n,
+
                       } as CSSProperties}
                     />
                   ))}
