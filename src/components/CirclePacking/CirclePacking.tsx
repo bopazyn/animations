@@ -1,4 +1,4 @@
-import {useState, useMemo, Fragment} from "react";
+import {useState, useMemo, Fragment, type CSSProperties} from "react";
 import styles from "./CirclePacking.module.css";
 
 const countCircles = (R: number, r: number, p: number) => {
@@ -135,6 +135,7 @@ const CirclePacking = () => {
 
           <div className={styles.svgWrapper}>
             <svg
+              key={[n,r, d, p, enlargement, animationDuration].join('_')}
               width={svgSize}
               height={svgSize}
               viewBox={`0 0 ${svgSize} ${svgSize}`}
@@ -150,18 +151,12 @@ const CirclePacking = () => {
                       fill={`${COLORS.layers[(i + 1) % COLORS.layers.length]}1a`}
                       stroke={COLORS.layers[(i + 1) % COLORS.layers.length]}
                       strokeWidth={0.8}
-                    >
-                      {c.alfa}
-                      <animate
-                        key={c.alfa}
-                        attributeName="r"
-                        keyTimes="0; 0.1; 0.2; 0.5; 0.6; 0.8; 1"
-                        values={`${r};${r * enlargement};${r};${r};${r * enlargement};${r};${r}`}
-                        dur={`${animationDuration}s`}
-                        begin={`${c.alfa/(2*Math.PI)*animationDuration}s`}
-                        repeatCount="indefinite"
-                      />
-                    </circle>
+                      style={{
+                        '--duration': animationDuration,
+                        '--enlargement': enlargement,
+                        '--alpha': c.alfa
+                      } as CSSProperties}
+                    />
                   ))}
                 </Fragment>
               ))}
