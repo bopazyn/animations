@@ -9,8 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LookAtMeRouteImport } from './routes/look-at-me'
+import { Route as CirclePackingRouteImport } from './routes/circle-packing'
 import { Route as IndexRouteImport } from './routes/index'
 
+const LookAtMeRoute = LookAtMeRouteImport.update({
+  id: '/look-at-me',
+  path: '/look-at-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CirclePackingRoute = CirclePackingRouteImport.update({
+  id: '/circle-packing',
+  path: '/circle-packing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +31,50 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/circle-packing': typeof CirclePackingRoute
+  '/look-at-me': typeof LookAtMeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/circle-packing': typeof CirclePackingRoute
+  '/look-at-me': typeof LookAtMeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/circle-packing': typeof CirclePackingRoute
+  '/look-at-me': typeof LookAtMeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/circle-packing' | '/look-at-me'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/circle-packing' | '/look-at-me'
+  id: '__root__' | '/' | '/circle-packing' | '/look-at-me'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CirclePackingRoute: typeof CirclePackingRoute
+  LookAtMeRoute: typeof LookAtMeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/look-at-me': {
+      id: '/look-at-me'
+      path: '/look-at-me'
+      fullPath: '/look-at-me'
+      preLoaderRoute: typeof LookAtMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/circle-packing': {
+      id: '/circle-packing'
+      path: '/circle-packing'
+      fullPath: '/circle-packing'
+      preLoaderRoute: typeof CirclePackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CirclePackingRoute: CirclePackingRoute,
+  LookAtMeRoute: LookAtMeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

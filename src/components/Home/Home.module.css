@@ -1,0 +1,91 @@
+.page {
+  background: #0f0f0f;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  padding: 2rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #161616;
+}
+
+.header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #262626;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.headerDot {
+  font-size: 13px;
+  color: #3a3a3a;
+}
+
+.headerTitle {
+  font-size: 12px;
+  color: #4a4a4a;
+  letter-spacing: 0.08em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #1e1e1e;
+  text-decoration: none;
+  color: #5a5a5a;
+  transition: background 0.12s, color 0.12s;
+}
+
+.entry:last-child {
+  border-bottom: none;
+}
+
+.entry:hover {
+  background: #1c1c1c;
+  color: #e8e8e8;
+}
+
+.entry:hover .entryDot {
+  color: #e8e8e8;
+}
+
+.entry:hover .entryArrow {
+  color: #4a4a4a;
+}
+
+.entryDot {
+  font-size: 11px;
+  color: #2e2e2e;
+  transition: color 0.12s;
+  flex-shrink: 0;
+}
+
+.entryLabel {
+  flex: 1;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.entryArrow {
+  font-size: 13px;
+  color: #2e2e2e;
+  transition: color 0.12s;
+}
