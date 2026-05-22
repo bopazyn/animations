@@ -1,4 +1,5 @@
 import {type CSSProperties, Fragment, useCallback, useState} from "react";
+import {AnimationCard} from '#/components/AnimationCard/AnimationCard';
 import styles from './LookAtMe.module.css';
 import {throttle} from 'es-toolkit'
 
@@ -22,8 +23,8 @@ const LookAtMe = () => {
   }, 30), []);
 
   return (
-    <div className={styles.page}>
-    <svg width="800" height="800" viewBox="0 0 400 400" onMouseMove={onMouseMove}>
+    <AnimationCard dot="●" title="LOOK AT ME">
+    <svg width="600" height="600" viewBox="0 0 400 400" onMouseMove={onMouseMove} className={styles.svg}>
       <defs>
         <symbol id="arrow">
           <path
@@ -49,7 +50,7 @@ const LookAtMe = () => {
       ))}
       <circle r={3} cx={x} cy={y} fill="grey"/>
     </svg>
-    </div>
+    </AnimationCard>
   );
 };
 

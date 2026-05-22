@@ -1,4 +1,5 @@
 import {useState, useMemo, Fragment, type CSSProperties} from "react";
+import {AnimationCard} from '#/components/AnimationCard/AnimationCard';
 import styles from "./CirclePacking.module.css";
 
 const countCircles = (R: number, r: number, p: number) => {
@@ -101,14 +102,8 @@ const CirclePacking = () => {
   const rs = r * scale;
 
   return (
-    <div className={styles.page}>
-      <div className={styles.card}>
-        <div className={styles.header}>
-          <span className={styles.headerDot}>●</span>
-          <span className={styles.headerTitle}>CIRCLE PACKING</span>
-        </div>
-
-        <div className={styles.layout}>
+    <AnimationCard dot="●" title="CIRCLE PACKING">
+      <div className={styles.layout}>
           <div className={styles.controls}>
             <div className={styles.sliderGroup}>
               <Slider label="n" id="n" min={1} max={10} value={n} onChange={setN} color={COLORS.layers[0]}/>
@@ -197,9 +192,8 @@ const CirclePacking = () => {
               />
             </svg>
           </div>
-        </div>
       </div>
-    </div>
+    </AnimationCard>
   );
 };
 

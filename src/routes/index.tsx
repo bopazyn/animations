@@ -4,6 +4,7 @@ import styles from "#/components/Home/Home.module.css";
 const ENTRIES = [
   {to: '/circle-packing', label: 'CIRCLE PACKING', dot: '◉'},
   {to: '/look-at-me', label: 'LOOK AT ME', dot: '●'},
+  {to: '/logo-drops', label: 'LOGO DROPS', dot: '◎'},
 ] as const;
 
 const Home = () => (
